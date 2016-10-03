@@ -187,7 +187,7 @@ ptr<iface> iface::open_ifd(const std::string& name)
     // Create a socket.
 
     if ((fd = socket(PF_INET6, SOCK_RAW, IPPROTO_ICMPV6)) < 0) {
-        logger::error() << "Unable to create socket";
+        logger::error() << "Unable to create socket: " << errno;;
         return ptr<iface>();
     }
 
