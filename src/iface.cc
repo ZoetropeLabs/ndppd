@@ -17,6 +17,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <cstddef>
+#include <cerrno>
 
 #include <unistd.h>
 
@@ -94,7 +95,7 @@ ptr<iface> iface::open_pfd(const std::string& name)
     // Create a socket.
 
     if ((fd = socket(PF_PACKET, SOCK_RAW, htons(ETH_P_IPV6))) < 0) {
-        logger::error() << "Unable to create socket";
+        logger::error() << "Unable to create socket: " << errno;;
         return ptr<iface>();
     }
 
